@@ -1,0 +1,6 @@
+*.key
+*.pem
+*secret*.yaml
+!*sealed*secret*.yaml
+.env
+*.tmp
