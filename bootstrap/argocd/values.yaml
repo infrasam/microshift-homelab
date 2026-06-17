@@ -1,0 +1,16 @@
+---
+crds:
+  install: true
+
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
+
+applicationSet:
+  enabled: true
+
+configs:
+  params:
+    server.insecure: true
