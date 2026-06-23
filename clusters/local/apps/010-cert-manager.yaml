@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,14 +8,24 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/infrasam/microshift-homelab.git
-    targetRevision: main
-    path: infrastructure/cert-manager/base
+    repoURL: https://charts.jetstack.io
+    chart: cert-manager
+    targetRevision: v1.20.2
+    helm:
+      releaseName: cert-manager
+      values: |
+        crds:
+          enabled: true
+        extraArgs:
+          - "--dns01-recursive-nameservers=10.43.0.10:53"
+          - "--dns01-recursive-nameservers-only"
   destination:
     server: https://kubernetes.default.svc
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
