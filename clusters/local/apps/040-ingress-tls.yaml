@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/infrasam/microshift-homelab.git
     targetRevision: main
-    path: infrastructure/ingress-tls/overlays/dev
+    path: infrastructure/ingress-tls/overlays/prod
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
