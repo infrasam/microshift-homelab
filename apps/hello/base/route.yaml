@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: hello
+spec:
+  host: hello.apps.k8slabs.se
+  to:
+    kind: Service
+    name: hello
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
