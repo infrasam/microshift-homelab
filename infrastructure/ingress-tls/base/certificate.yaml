@@ -5,7 +5,7 @@ metadata:
   name: wildcard-apps
   namespace: openshift-ingress
 spec:
-  secretName: wildcard-apps-tls
+  secretName: router-certs-default
   issuerRef:
     name: letsencrypt-dev
     kind: ClusterIssuer
