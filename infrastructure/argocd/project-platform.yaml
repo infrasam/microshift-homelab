@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform
+  namespace: argocd
+spec:
+  description: Platform infrastructure (operators, certs, ingress)
+  sourceRepos:
+    - 'https://github.com/infrasam/*'
+    - 'https://github.com/operator-framework/*'
+    - 'https://charts.jetstack.io'
+  destinations:
+    - server: 'https://kubernetes.default.svc'
+      namespace: '*'
+  clusterResourceWhitelist:        # infra FÅR skapa cluster-scoped (SCC, CRD, ClusterRole)
+    - group: '*'
+      kind: '*'
