@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  description: Application workloads
+  sourceRepos:
+    - 'https://github.com/infrasam/*'
+  destinations:
+    - server: 'https://kubernetes.default.svc'
+      namespace: '*'
+  clusterResourceWhitelist:        # ⛔ workloads får BARA skapa eget Namespace
+    - group: ''
+      kind: Namespace
+  namespaceResourceWhitelist:      # …men valfri namespaced-resurs
+    - group: '*'
+      kind: '*'
