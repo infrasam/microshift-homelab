@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  channel: beta                      # från packagemanifest
+  name: prometheus                   # paketnamnet
+  source: operatorhubio-catalog      # CatalogSource
+  sourceNamespace: olm               # …i namespace olm
+  installPlanApproval: Automatic     # rulla uppgraderingar automatiskt
